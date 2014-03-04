@@ -1,6 +1,8 @@
 var MinionDancer = function(top, left, timeBetweenSteps) {
   Dancer.call(this, top, left, timeBetweenSteps);
-  this.$node.css('background-image', 'url(images/minion_fruit.png)');
+
+  this.$node.css('background-image', this.randomMinion());
+
   this.$node.css('background-size', '100%');
   this.$node.css('border-width', '0px');
   this.$node.css('width', '100px');
@@ -24,4 +26,17 @@ MinionDancer.prototype.step = function(){
   newleft += Math.round(Math.random() * 4 - 2);
   this.$node.css('left', newleft);
 
+};
+
+MinionDancer.prototype.randomMinion = function() {
+  var minions = [
+    "url(images/minion_arms-up.png)", 
+    "url(images/minion_fruit.png)", 
+    "url(images/minion_hula.png)", 
+    "url(images/minion_kicking.png)", 
+    "url(images/minion_tongue.png)", 
+    "url(images/minion_waving.png)"
+  ];
+  var randomNumber = Math.round(Math.random() * minions.length);
+  return minions[randomNumber]; 
 };
